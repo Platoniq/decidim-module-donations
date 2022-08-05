@@ -7,11 +7,14 @@ on:
   pull_request:
 
 env:
-  RUBY_VERSION: 2.7.3
+  RUBY_VERSION: 2.7.6
 
 jobs:
   test-report:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        decidim_version: [ 0.25, 0.26 ]
 
     services:
       postgres:
@@ -50,3 +53,8 @@ jobs:
         with:
           name: screenshots
           path: ./spec/decidim_dummy_app/tmp/screenshots
+
+      - name: Precompile
+        run: |
+          cd spec/decidim_dummy_app
+          bundle exec rails assets:precompile
