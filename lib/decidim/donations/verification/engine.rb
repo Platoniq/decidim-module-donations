@@ -16,11 +16,6 @@ module Decidim
           root to: "authorizations#new"
         end
 
-        initializer "decidim_donations.assets" do |app|
-          app.config.assets.precompile += %w(decidim_donations_manifest.css
-                                             decidim/donations/donations.scss)
-        end
-
         def load_seed
           # Enable the `:donations` authorization
           org = Decidim::Organization.first

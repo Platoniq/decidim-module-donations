@@ -14,10 +14,6 @@ module Decidim
         end
       end
 
-      initializer "decidim_donations.assets" do |app|
-        app.config.assets.precompile += %w(decidim_donations_manifest.css decidim_donations_manifest.js)
-      end
-
       initializer "decidim_donations.add_cells_view_paths" do
         Cell::ViewModel.view_paths << File.expand_path("#{Decidim::Donations::Engine.root}/app/cells")
         Cell::ViewModel.view_paths << File.expand_path("#{Decidim::Donations::Engine.root}/app/views") # for partials
@@ -52,6 +48,10 @@ module Decidim
                     decidim_user_donations.user_donations_path,
                     position: 1.5
         end
+      end
+
+      initializer "decidim_donations.webpacker.assets_path" do
+        Decidim.register_assets_path File.expand_path("app/packs", root)
       end
     end
   end
