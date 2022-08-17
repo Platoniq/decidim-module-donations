@@ -6,11 +6,11 @@ module Decidim
   module Donations
     module Providers
       class PaypalExpress < AbstractProvider
-        def initialize(login:, password:, signature:)
+        def initialize(options = {})
           @gateway = ActiveMerchant::Billing::PaypalExpressGateway.new({
-                                                                         login: login,
-                                                                         password: password,
-                                                                         signature: signature
+                                                                         login: options[:login],
+                                                                         password: options[:password],
+                                                                         signature: options[:signature]
                                                                        })
         end
 

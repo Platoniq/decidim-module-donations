@@ -15,14 +15,22 @@ module Decidim
 
           enforce_permission_to :create, :authorization, authorization: authorization
 
-          @form = checkout_form
+          @form = if Decidim::Donations.provider == :stripe_express
+                    stripe_form
+                  else
+                    checkout_form
+                  end
         end
 
         # preparation step and redirect to gateway
         def create
           enforce_permission_to :create, :authorization, authorization: authorization
 
-          @form = checkout_form
+          @form = if Decidim::Donations.provider == :stripe_express
+                    stripe_form
+                  else
+                    checkout_form
+                  end
 
           if @form.invalid?
             flash[:alert] = t("checkout.error", scope: "decidim.donations", message: t("checkout.amount_errors", scope: "decidim.donations"))
@@ -49,7 +57,12 @@ module Decidim
         def checkout
           enforce_permission_to :create, :authorization, authorization: authorization
 
-          @form = checkout_form
+          @form = if Decidim::Donations.provider == :stripe_express
+                    stripe_form
+                  else
+                    checkout_form
+                  end
+
           PayOrder.call(@form, provider) do
             on(:ok) do |response|
               flash[:notice] = t("checkout.success", scope: "decidim.donations")
@@ -90,6 +103,14 @@ module Decidim
                                          title: I18n.t("checkout.title", name: current_user.name, scope: "decidim.donations"),
                                          description: I18n.t("checkout.description", organization: current_organization.name, scope: "decidim.donations"),
                                          minimum_amount: Donations.verification_amount)
+        end
+
+        def stripe_form
+          form(StripeForm).from_params(params,
+                                       ip: request.remote_ip,
+                                       return_url: decidim_user_donations.checkout_user_donations_url,
+                                       cancel_return_url: decidim_user_donations.checkout_user_donations_url,
+                                       process_path: authorization_path)
         end
 
         def authorization_form

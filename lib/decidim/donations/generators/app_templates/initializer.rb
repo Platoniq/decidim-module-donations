@@ -15,10 +15,9 @@ Decidim::Donations.credentials do
   config.verification_amount = 5 # if this config is omitted, defaults to minimum_amount
   config.default_amount = 10
 
-  config.provider = :paypal_express # currently only this one is supported
+  config.provider = :paypal_express # [:paypal_express, :stripe_express] are the only providers supported
   config.credentials = {
-    login: Rails.application.secrets.donations[:login],
-    password: Rails.application.secrets.donations[:password],
-    signature: Rails.application.secrets.donations[:signature]
+    login: sk_test_51LVAMpFmqwVqTUhDO0axDC9r707qg4SdO4WlS6qvfnimHp90QYkIw76w9ZKkWJcrJM2NC6J8qIdz2aBpke9mFeFa00wI8AlrOJ,
+    publishable_key: pk_test_51LVAMpFmqwVqTUhDmm0GfEXZF55hZXtAPgFWIPAlYsvoEidB2LcUibFeUgBvByI2sHJ5pd7xFwhw2vhSk90noCHA00GAHfTBEX
   }
 end
