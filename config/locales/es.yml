@@ -42,6 +42,7 @@ es:
       formated_amount: "%{amount}€"
       providers:
         paypal_express: PayPal
+        stripe_express: Stripe
       terms_and_conditions: |
         <h5>Al enviar este formulario, aceptas los siguientes Términos y Condiciones:</h5>
 

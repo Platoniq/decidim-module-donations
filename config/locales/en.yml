@@ -24,6 +24,11 @@ en:
         description: A minimum amount of %{minimum_amount} is required in order to
           complete the authorization.<br>The amount suggested is %{default_amount}
           but you can change it if you want.
+      stripe_form:
+        checkout: Donate with %{provider}
+        description: A minimum amount of %{minimum_amount} is required in order to
+          complete the authorization.<br>The amount suggested is %{default_amount}
+          but you can change it if you want.
       checkout:
         amount_errors: The amount is incorrect
         description: A contribution for %{organization}
@@ -46,6 +51,7 @@ en:
       formated_amount: "%{amount}€"
       providers:
         paypal_express: PayPal
+        stripe_express: Stripe
       terms_and_conditions: |
         <h5>By sending this form you agree with the following Terms and Conditions:</h5>
 

@@ -16,8 +16,8 @@ module Decidim
           end
         end
 
-        def initialize(login:, password:)
-          @gateway = ActiveMerchant::Billing::TrustCommerceGateway(login: login, password: password)
+        def initialize(options = {})
+          @gateway = ActiveMerchant::Billing::TrustCommerceGateway(login: options[:login], password: options[:password])
         end
 
         attr_reader :gateway

@@ -6,7 +6,7 @@
 
 A plugin to allow donations and verify users with them. 
 
-Currently supports PayPal Express Checkout but more payment methods can be easily added (feel free to make contributions in this regard).
+Currently supports PayPal Express Checkout but more payment methods can be easily added (feel free to make contributions in this regard). Stripe is currently being added as a payment method.
 
 Verification form:
 
@@ -61,7 +61,7 @@ Decidim::Donations.configure do |config|
   config.verification_amount = 5 # if this config is omitted, defaults to minimum_amount
   config.default_amount = 5
 
-  config.provider = :paypal_express # currently only this one is supported
+  config.provider = :paypal_express
   config.credentials = {
     login: Rails.application.secrets.donations[:login],
     password: Rails.application.secrets.donations[:password],
