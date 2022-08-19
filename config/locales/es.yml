@@ -19,6 +19,10 @@ es:
     donations:
       amount_form:
         checkout: Donar con %{provider}
+        credit_card:
+          cvc: CVC
+          expiration: Fecha de expiración (mm/yyyy)
+          number: Número de la tarjeta
         description: Se requiere un importe mínimo de %{minimum_amount} para completar la autorización.<br>La cantidad sugerida es de %{default_amount} pero puedes cambiarla si quieres.
       checkout:
         amount_errors: El importe es incorrecto
@@ -42,6 +46,7 @@ es:
       formated_amount: "%{amount}€"
       providers:
         paypal_express: PayPal
+        stripe: Stripe
       terms_and_conditions: |
         <h5>Al enviar este formulario, aceptas los siguientes Términos y Condiciones:</h5>
 

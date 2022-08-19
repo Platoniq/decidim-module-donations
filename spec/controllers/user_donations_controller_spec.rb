@@ -23,6 +23,7 @@ module Decidim::Donations
              transaction_id: transaction_id,
              gateway: double,
              method: :paypal_express,
+             form: Decidim::Donations::CheckoutForm,
              transaction_hash: "some-hash")
     end
     let(:multistep) { true }

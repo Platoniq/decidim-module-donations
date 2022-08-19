@@ -74,13 +74,13 @@ module Decidim
       end
 
       def checkout_form
-        form(CheckoutForm).from_params(params,
-                                       ip: request.remote_ip,
-                                       return_url: decidim_user_donations.checkout_user_donations_url,
-                                       cancel_return_url: decidim_user_donations.checkout_user_donations_url,
-                                       process_path: decidim_user_donations.user_donations_path,
-                                       title: I18n.t("checkout.title", name: current_user.name, scope: "decidim.donations"),
-                                       description: I18n.t("checkout.description", organization: current_organization.name, scope: "decidim.donations"))
+        form(provider.form).from_params(params,
+                                        ip: request.remote_ip,
+                                        return_url: decidim_user_donations.checkout_user_donations_url,
+                                        cancel_return_url: decidim_user_donations.checkout_user_donations_url,
+                                        process_path: decidim_user_donations.user_donations_path,
+                                        title: I18n.t("checkout.title", name: current_user.name, scope: "decidim.donations"),
+                                        description: I18n.t("checkout.description", organization: current_organization.name, scope: "decidim.donations"))
       end
 
       def needs_authorization?

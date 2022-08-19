@@ -42,6 +42,7 @@ ca:
       formated_amount: "%{amount}€"
       providers:
         paypal_express: PayPal
+        stripe: Stripe
       terms_and_conditions: |
         <h5>En enviar aquest formulari accepteu els Termes i Condicions següents:</h5>
 

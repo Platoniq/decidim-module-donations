@@ -21,6 +21,10 @@ en:
     donations:
       amount_form:
         checkout: Donate with %{provider}
+        credit_card:
+          cvc: CVC
+          expiration: Expiration (mm/yyyy)
+          number: Card Number
         description: A minimum amount of %{minimum_amount} is required in order to
           complete the authorization.<br>The amount suggested is %{default_amount}
           but you can change it if you want.
@@ -46,6 +50,7 @@ en:
       formated_amount: "%{amount}€"
       providers:
         paypal_express: PayPal
+        stripe: Stripe
       terms_and_conditions: |
         <h5>By sending this form you agree with the following Terms and Conditions:</h5>
 
