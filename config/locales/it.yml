@@ -48,6 +48,7 @@ it:
       formated_amount: "%{amount}€"
       providers:
         paypal_express: PayPal
+        stripe: Stripe
       terms_and_conditions: |
         <h5>Inviando questo modulo accetti i seguenti Termini e Condizioni:</h5>
 

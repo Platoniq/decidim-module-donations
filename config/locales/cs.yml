@@ -42,6 +42,7 @@ cs:
       formated_amount: "%{amount}€"
       providers:
         paypal_express: PayPal
+        stripe: Stripe
       terms_and_conditions: |
         <h5>Odesláním tohoto formuláře souhlasíte s následujícími obchodními podmínkami:</h5>
 

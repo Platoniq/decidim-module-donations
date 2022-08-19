@@ -8,11 +8,16 @@
       font-weight: bold;
       font-size: 1.2em;
     }
+    &.stripe {
+      text-transform: lowercase;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
   }
   .terms-and-conditions, .description {
     margin-top: 2em;
   }
-  .checkout-form {
+  [class$="checkout-form"] {
     >.amount {
       width: 33.33%;
     }
@@ -20,7 +25,7 @@
       font-weight: 600;
       font-size: 1.5em;
     }
-    #checkout_amount {
+    [id$="checkout_amount"] {
       font-size: 3rem;
       height: auto;
       background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='28px' width='80px'><text x='1' y='13' fill='gray'><%= Decidim.currency_unit %></text></svg>");
@@ -28,6 +33,16 @@
       background-position: 0.5em 0.5em;
       background-size: contain;
       padding-left: 1.5em;
+    }
+    .credit-card {
+      .single-line {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 0.5em;
+        label {
+          flex-grow: 1;
+        }
+      }
     }
   }
 }
@@ -82,7 +97,7 @@
       text-align: left;
     }
   }
-  .checkout-form {
+  [class$="checkout-form"] {
     >.amount {
       width: 50%;
     }

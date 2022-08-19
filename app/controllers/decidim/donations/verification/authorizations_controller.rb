@@ -82,14 +82,14 @@ module Decidim
         end
 
         def checkout_form
-          form(CheckoutForm).from_params(params,
-                                         ip: request.remote_ip,
-                                         return_url: decidim_donations.checkout_authorization_url,
-                                         cancel_return_url: decidim_donations.checkout_authorization_url,
-                                         process_path: authorization_path,
-                                         title: I18n.t("checkout.title", name: current_user.name, scope: "decidim.donations"),
-                                         description: I18n.t("checkout.description", organization: current_organization.name, scope: "decidim.donations"),
-                                         minimum_amount: Donations.verification_amount)
+          form(provider.form).from_params(params,
+                                          ip: request.remote_ip,
+                                          return_url: decidim_donations.checkout_authorization_url,
+                                          cancel_return_url: decidim_donations.checkout_authorization_url,
+                                          process_path: authorization_path,
+                                          title: I18n.t("checkout.title", name: current_user.name, scope: "decidim.donations"),
+                                          description: I18n.t("checkout.description", organization: current_organization.name, scope: "decidim.donations"),
+                                          minimum_amount: Donations.verification_amount)
         end
 
         def authorization_form

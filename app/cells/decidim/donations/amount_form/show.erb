@@ -9,6 +9,16 @@
     <%= decidim_form_for(form, url: process_path) do |form| %>
       <%= form.number_field :amount %>
 
+      <% if provider.form == Decidim::Donations::CreditCardCheckoutForm %>
+        <div class="credit-card">
+          <%= form.text_field :card_number, placeholder: "1234 1234 1234 1234", label: t(".credit_card.number"), inputmode: "numeric", class: "credit-card-number-input" %>
+          <div class="single-line">
+            <%= form.text_field :card_expiration, placeholder: "MM/YYYY", label: t(".credit_card.expiration"), inputmode: "numeric", class: "credit-card-expiration-input" %>
+            <%= form.text_field :card_cvc, placeholder: "CVC", label: t(".credit_card.cvc"), inputmode: "numeric", size: 4, class: "credit-card-cvc-input" %>
+          </div>
+        </div>
+      <% end %>
+
       <div class="actions">
         <%= form.submit t(".checkout", provider: "<span class='provider #{provider.method}'>#{provider.name}</span>").html_safe, class: "button expanded primary large" %>
       </div>
@@ -25,3 +35,4 @@
 <% end %>
 
 <%= stylesheet_link_tag "decidim/donations/donations" %>
+<%= javascript_include_tag "decidim/donations/credit_card_form" %>

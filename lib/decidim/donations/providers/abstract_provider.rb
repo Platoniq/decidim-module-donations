@@ -14,6 +14,10 @@ module Decidim
           def provider_name
             I18n.t("providers.#{manifest_name}", scope: "decidim.donations")
           end
+
+          def form
+            Decidim::Donations::CheckoutForm
+          end
         end
 
         def initialize(login:, password:)
@@ -55,6 +59,10 @@ module Decidim
           raise PaymentError unless transaction_id
 
           "#{method}-#{transaction_id}"
+        end
+
+        def form
+          self.class.form
         end
       end
     end
